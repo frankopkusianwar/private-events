@@ -10,7 +10,35 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_05_25_154130) do
+ActiveRecord::Schema.define(version: 2020_05_26_093450) do
+
+  create_table "creates", force: :cascade do |t|
+    t.integer "user_id", null: false
+    t.integer "event_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["event_id"], name: "index_creates_on_event_id"
+    t.index ["user_id"], name: "index_creates_on_user_id"
+  end
+
+  create_table "events", force: :cascade do |t|
+    t.string "name"
+    t.string "date"
+    t.string "description"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "invitations", force: :cascade do |t|
+    t.integer "invitor_id"
+    t.integer "invitee_id"
+    t.integer "event_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["event_id"], name: "index_invitations_on_event_id"
+    t.index ["invitee_id"], name: "index_invitations_on_invitee_id"
+    t.index ["invitor_id"], name: "index_invitations_on_invitor_id"
+  end
 
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -24,4 +52,7 @@ ActiveRecord::Schema.define(version: 2020_05_25_154130) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "creates", "events"
+  add_foreign_key "creates", "users"
+  add_foreign_key "invitations", "events"
 end

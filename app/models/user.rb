@@ -13,7 +13,7 @@ class User < ApplicationRecord
   has_many :attendances, foreign_key: 'user_id'
   has_many :events_attended, through: :attendances, source: :event
 
-  def self.current_user
+  def self.current_user_now
     current_user
   end
 end

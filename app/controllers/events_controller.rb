@@ -9,9 +9,8 @@ class EventsController < ApplicationController
 
   def create
     @event = Event.new(event_params)
-    @event.creators << current_user
     @event.save
-    @event.invite_action(params[:invitedlist])
+    @event.invite_action(params[:invitedlist], params[:user_now_id])
   end
 
   def event_params

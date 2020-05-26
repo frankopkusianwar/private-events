@@ -17,13 +17,17 @@ class Event < ApplicationRecord
     return words.split(',')
   end
 
-  def invite_action(arr)
+  def invite_action(arr, id)
     list = invite_list(arr)
+    
+    current_user_now = User.find(id)
     byebug
     list.each do |user_mail|
       user = User.find_by(email: user_mail)
-      Invitation.create(invitor: User.current_user, invitee: user, event: self)
+      inv = Invitation.new(invitor: current_user_now, invitee: user, event: self)
+      inv.save
     end
+    
   end
 
 end

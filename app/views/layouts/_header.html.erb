@@ -1,0 +1,49 @@
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+  <a class="navbar-brand" href="#">Navbar</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <% if signed_in? %>
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item active">
+        <% link_to 'Home', class:"nav-link" %>
+      </li>
+      <li class="nav-item">
+        <%= link_to 'create events', class: "nav-link" %>
+      </li>
+      <li class="nav-item dropdown">
+       <%= link_to current_user.email, user_path(current_user), class:"nav-link dropdown-toggle", 'data-toggle' => 'dropdown'  %>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+          <%= link_to 'edit profile', class: "dropdown-item" %>
+          <div class="dropdown-divider"></div>
+          <%= link_to 'view profile', class: "dropdown-item" %>
+        </div>
+      </li>
+      <%= link_to 'events', path, class:"nav-link dropdown-toggle", 'data-toggle' => 'dropdown'  %>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+          <%= link_to 'created events', class: "dropdown-item" %>
+          <div class="dropdown-divider"></div>
+          <%= link_to 'invited events', class: "dropdown-item" %>
+          <div class="dropdown-divider"></div>
+          <%= link_to 'attended events', class: "dropdown-item" %>
+        </div>
+      </li>
+    </ul>
+    <form class="form-inline my-2 my-lg-0">
+      <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+      <button class="btn btn-outline-success my-2 my-sm-0 mr-2" type="submit">Search</button>
+      <%= link_to 'logout', destroy_user_session_path, method: :delete, class: "btn btn-outline-success my-2 my-sm-0" %>
+    </form>
+    <% else %>
+      <form class="form-inline my-2 my-lg-0">
+      <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+      <button class="btn btn-outline-success my-2 my-sm-0 mr-2" type="submit">Search</button>
+      <%= link_to 'register', new_user_registration_path, class: "btn btn-outline-success my-2 my-sm-0" %>
+      <%= link_to 'sign in', new_user_session_path, class: "btn btn-outline-success my-2 my-sm-0" %>
+    </form>
+    <% end %>
+  </div>
+</nav>
+
+  

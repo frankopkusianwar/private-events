@@ -7,10 +7,10 @@
     <% if signed_in? %>
     <ul class="navbar-nav mr-auto">
       <li class="nav-item active">
-        <% link_to 'Home', class:"nav-link" %>
+        <%= link_to 'Home', '#', class: "nav-link" %>
       </li>
       <li class="nav-item">
-        <%= link_to 'create events', class: "nav-link" %>
+        <%= link_to 'create events', '#', class: "nav-link" %>
       </li>
       <li class="nav-item dropdown">
        <%= link_to current_user.email, user_path(current_user), class:"nav-link dropdown-toggle", 'data-toggle' => 'dropdown'  %>
@@ -20,7 +20,7 @@
           <%= link_to 'view profile', class: "dropdown-item" %>
         </div>
       </li>
-      <%= link_to 'events', path, class:"nav-link dropdown-toggle", 'data-toggle' => 'dropdown'  %>
+      <%= link_to 'events', '#', class:"nav-link dropdown-toggle", 'data-toggle' => 'dropdown'  %>
         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
           <%= link_to 'created events', class: "dropdown-item" %>
           <div class="dropdown-divider"></div>

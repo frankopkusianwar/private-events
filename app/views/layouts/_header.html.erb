@@ -10,7 +10,7 @@
         <%= link_to 'Home', '#', class: "nav-link" %>
       </li>
       <li class="nav-item">
-        <%= link_to 'create events', '#', class: "nav-link" %>
+        <%= link_to 'create events', new_event_path, class: "nav-link" %>
       </li>
       <li class="nav-item dropdown">
        <%= link_to current_user.email, user_path(current_user), class:"nav-link dropdown-toggle", 'data-toggle' => 'dropdown'  %>

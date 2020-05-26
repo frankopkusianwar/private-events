@@ -18,7 +18,7 @@
   <div class="form-group">
     <%= f.label :invitedlist %>
     <%= text_field_tag(:invitedlist) %>
-   <%=  hidden_field_tag(:user_now_id, value = current_user.id) %>
+    <%=  hidden_field_tag(:user_now_id, value = current_user.id) %>
   </div>
   <button type="submit" class="btn btn-primary">Create Event</button>
 <% end %>

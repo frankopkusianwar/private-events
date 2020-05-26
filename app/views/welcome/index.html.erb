@@ -1,2 +1,13 @@
-<h1>Welcome#index</h1>
-<p>Find me in app/views/welcome/index.html.erb</p>
+<% @events.each do |event| %>
+  <div class="card">
+  <div class="card-header">
+    Coming or Past
+  </div>
+  <div class="card-body">
+    <h5 class="card-title"> <%= event.name %> </h5>
+    <p class="card-text"> <%= event.description %> </p>
+    <%= link_to 'See More', event_path(event), class: 'btn btn-primary' %>
+  </div>
+</div>
+
+<% end %>

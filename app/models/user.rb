@@ -13,7 +13,22 @@ class User < ApplicationRecord
   has_many :attendances, foreign_key: 'user_id'
   has_many :events_attended, through: :attendances, source: :event
 
+  has_many :sign_ups, foreign_key: 'User_id'
+  has_many :events_signed_up, through: :sign_ups, source: :Event
+
   def self.current_user_now
     current_user
+  end
+
+  def check_invited?(event)
+    event.invitations.each do |e|
+      if e.invitor == self
+        return true
+      elsif e.invitee == self
+        return true
+      else
+        return false
+      end
+    end
   end
 end

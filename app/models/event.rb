@@ -13,6 +13,9 @@ class Event < ApplicationRecord
   has_many :attendances, foreign_key: 'event_id'
   has_many :users_attendants, through: :attendances, source: :user
 
+  has_many :sign_ups, foreign_key: 'Event_id'
+  has_many :users_signed_up, through: :sign_ups, source: :User
+
   def invite_list(words)
     return words.split(',')
   end

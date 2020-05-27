@@ -16,3 +16,20 @@
     </ul>
   </div>
 
+  <h4 class="h5"> List of all users </h4>
+  <div class="card" style="width: 18rem;">
+    <ul class="list-group list-group-flush">
+      <% @users.each do |user| %>
+        <li class="list-group-item"> <%= user.email if !user.check_invited?(@event) %></li>
+        <div class="form-group">
+        <%= form_with url: invitations_path , local: true, method: :POST do |f| %>
+          <%= f.hidden_field :invitator, value: current_user.id %>
+          <%= f.hidden_field :invitee, value: user.id %>
+          <%= f.hidden_field :event, value: @event.id %>
+          <button type="submit" class="btn btn-primary">Invite User</button>
+        <% end %>
+  </div>
+        <% end %>
+    </ul>
+  </div>
+

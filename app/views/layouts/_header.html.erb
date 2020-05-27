@@ -20,14 +20,11 @@
           <%= link_to 'view profile', class: "dropdown-item" %>
         </div>
       </li>
-      <%= link_to 'events', '#', class:"nav-link dropdown-toggle", 'data-toggle' => 'dropdown'  %>
-        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-          <%= link_to 'created events', class: "dropdown-item" %>
-          <div class="dropdown-divider"></div>
-          <%= link_to 'invited events', class: "dropdown-item" %>
-          <div class="dropdown-divider"></div>
-          <%= link_to 'attended events', class: "dropdown-item" %>
-        </div>
+      <li class="nav-item dropdown">
+        <%= link_to 'events', '#', class:"nav-link dropdown-toggle", 'data-toggle' => 'dropdown'  %>
+          <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+            <%= link_to 'created events', root_path , class: "dropdown-item" %>
+          </div>
       </li>
     </ul>
     <form class="form-inline my-2 my-lg-0">

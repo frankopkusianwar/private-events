@@ -1,5 +1,5 @@
 class WelcomeController < ApplicationController
   def index
-    @events = Event.all
+    @events = Event.order(:date)
   end
 end

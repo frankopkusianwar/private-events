@@ -1,5 +1,4 @@
 class Event < ApplicationRecord
-
   validates :name, presence: true
   validates :description, presence: true
   validates :date, presence: true
@@ -17,12 +16,12 @@ class Event < ApplicationRecord
   has_many :users_signed_up, through: :sign_ups, source: :User
 
   def invite_list(words)
-    return words.split(',')
+    words.split(',')
   end
 
   def invite_action(arr, id)
     list = invite_list(arr)
-    
+
     current_user_now = User.find(id)
     list.each do |user_mail|
       user = User.find_by(email: user_mail)
@@ -31,15 +30,14 @@ class Event < ApplicationRecord
     end
   end
 
-  def is_it_past?
+  def is_past?
     today = Time.now.to_s.split(' ')[0]
     if date > today
-      return 'Coming'
+      'Coming'
     elsif date == today
-      return 'Today'
+      'Today'
     else
-      return 'Past'
+      'Past'
     end
   end
-
 end

@@ -25,7 +25,6 @@ class EventsController < ApplicationController
       flash[:alert] = 'Invalid Parameters'
       render 'new'
     end
-
   end
 
   def event_params

@@ -32,21 +32,21 @@ gem 'bootsnap', '>= 1.4.2', require: false
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   # The RSpec testing framework
-  gem 'rspec-rails'
   gem 'factory_bot_rails'
   gem 'faker'
+  gem 'rspec-rails'
   # Capybara, the library that allows us to interact with the browser using Ruby
   gem 'capybara'
   # The following gems aids with the nuts and bolts
   # of interacting with the browser.
-  gem 'webdrivers'
+  gem 'byebug', platforms: %i[mri mingw x64_mingw]
   gem 'sqlite3', '~> 1.4'
-  gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
+  gem 'webdrivers'
 end
 
 group :test do
-  gem 'shoulda-matchers', '~>3.1'
   gem 'launchy'
+  gem 'shoulda-matchers', '~>3.1'
 end
 
 group :development do
@@ -59,4 +59,4 @@ group :production do
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
-gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
+gem 'tzinfo-data', platforms: %i[mingw mswin x64_mingw jruby]

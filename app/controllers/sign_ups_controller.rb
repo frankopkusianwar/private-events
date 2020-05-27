@@ -1,6 +1,5 @@
 class SignUpsController < ApplicationController
   def create
-
     @sign_up = SignUp.new
 
     @sign_up.User_id = params[:user]

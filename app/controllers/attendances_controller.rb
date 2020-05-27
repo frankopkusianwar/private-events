@@ -1,6 +1,5 @@
 class AttendancesController < ApplicationController
   def create
-
     @attendance = Attendance.new
 
     @attendance.user_id = params[:user]
@@ -13,5 +12,4 @@ class AttendancesController < ApplicationController
     @attended = Attendance.all
     @event = Event.all
   end
-
 end

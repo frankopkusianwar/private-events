@@ -30,7 +30,7 @@ class Event < ApplicationRecord
     end
   end
 
-  def is_past?
+  def past?
     today = Time.now.to_s.split(' ')[0]
     if date > today
       'Coming'

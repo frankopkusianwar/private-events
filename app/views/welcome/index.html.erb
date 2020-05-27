@@ -3,7 +3,7 @@
 <% @events.each do |event| %>
   <div class="card">
   <div class="card-header">
-    <%= event.is_past? %>
+    <%= event.past? %>
     <small class="text-muted"> <%= event.date.split('-').reverse.join('-') %> </small>
   </div>
   <div class="card-body">

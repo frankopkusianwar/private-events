@@ -6,8 +6,9 @@
   <p> <%= @event.date %> </p>
   <a class="btn btn-primary btn-lg" href="#" role="button">Learn more</a>
 </div>
-
-<h4 class="h5"> Guest List </h4>
+<div class="row">
+  <div class="col-4">
+  <h4 class="h5"> Guest List </h4>
   <div class="card" style="width: 18rem;">
     <ul class="list-group list-group-flush">
       <% @event.invitations.each do |invitation| %>
@@ -15,23 +16,62 @@
         <% end %>
     </ul>
   </div>
-
-  <h4 class="h5 mt-3"> List of all users </h4>
-  <div class="card" style="width: 18rem;">
-    <ul class="list-group list-group-flush">
-      <% @users.each do |user| %>
-        <%if !user.check_invited?(@event)%>
-          <li class="list-group-item"> <%= user.email %></li>
-          <div class="form-group">
-            <%= form_with url: invitations_path , local: true, method: :POST do |f| %>
-              <%= f.hidden_field :invitator, value: current_user.id %>
-              <%= f.hidden_field :invitee, value: user.id %>
-              <%= f.hidden_field :event, value: @event.id %>
-              <button type="submit" class="btn btn-primary">Invite User</button>
-            </div>
-            <% end %>
-        <% end %>
-      <% end %>
-    </ul>
   </div>
+
+  <div class="col-4">
+    <h4 class="h5 mt-3"> List of all users </h4>
+    <div class="card" style="width: 18rem;">
+      <ul class="list-group list-group-flush">
+        <% @users.each do |user| %>
+          <%if !user.check_invited?(@event) && @event.creators.include?(current_user)%>
+            <li class="list-group-item"> <%= user.email %></li>
+            <div class="form-group">
+              <%= form_with url: invitations_path , local: true, method: :POST do |f| %>
+                <%= f.hidden_field :invitator, value: current_user.id %>
+                <%= f.hidden_field :invitee, value: user.id %>
+                <%= f.hidden_field :event, value: @event.id %>
+                <button type="submit" class="btn btn-primary">Invite User</button>
+              </div>
+              <% end %>
+          <% end %>
+        <% end %>
+      </ul>
+    </div> 
+  </div>
+  <% if @event.creators.include?(current_user) || user.check_signed_up?(@event) %>
+  <div class="col-4">
+        <% @users.each do |user| %>
+          <%if user.check_signed_up?(@event) && !user.check_invited?(@event)%>
+            <li class="list-group-item"> <%= user.email %></li>
+            <% if @event.creators.include?(current_user) %>
+            <div class="form-group">
+              <%= form_with url: invitations_path , local: true, method: :POST do |f| %>
+                <%= f.hidden_field :invitator, value: current_user.id %>
+                <%= f.hidden_field :invitee, value: user.id %>
+                <%= f.hidden_field :event, value: @event.id %>
+                <button type="submit" class="btn btn-primary">Invite User</button>
+              </div>
+              <% end %>
+          <% end %>
+          <% end %>
+        <% end %>
+  </div>
+</div>
+<% end %>
+
+<% if !current_user.check_invited?(@event)%>
+<h1> If you are not invited, sign up to see if the creator allows you to come! </h1>
+
+<div class="form-group">
+  <%= form_with url: sign_ups_path , local: true, method: :POST do |f| %>
+    <%= f.hidden_field :user, value: current_user.id %>
+    <%= f.hidden_field :event, value: @event.id %>
+    <% if !@event.users_signed_up.include?(current_user)%>
+      <button type="submit" class="btn btn-primary">Sign up</button>
+    <% else %>
+      <p> Waiting for a confirmation from the User </p>
+    <% end %>
+  </div>
+ <% end %>
+ <% end %>
 

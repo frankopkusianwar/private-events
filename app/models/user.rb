@@ -24,4 +24,9 @@ class User < ApplicationRecord
       return true if event.users_invited.include?(self)
   end
 
+  def check_signed_up?(event)
+    return true if event.users_signed_up.include?(self)
+  end
+  
+
 end

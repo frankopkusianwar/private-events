@@ -27,7 +27,18 @@ class Event < ApplicationRecord
       inv = Invitation.new(invitor: current_user_now, invitee: user, event: self)
       inv.save
     end
-    
+  end
+
+  def is_it_past?
+    today = Time.now.to_s.split(' ')[0]
+    # today = today[5, today.size]
+    if date > today
+      return 'Coming'
+    elsif date == today
+      return 'Today'
+    else
+      return 'Past'
+    end
   end
 
 end

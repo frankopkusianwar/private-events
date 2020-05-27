@@ -33,6 +33,8 @@ group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   # The RSpec testing framework
   gem 'rspec-rails'
+  gem 'factory_bot_rails'
+  gem 'faker'
   # Capybara, the library that allows us to interact with the browser using Ruby
   gem 'capybara'
   # The following gems aids with the nuts and bolts
@@ -40,6 +42,11 @@ group :development, :test do
   gem 'webdrivers'
   gem 'sqlite3', '~> 1.4'
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
+end
+
+group :test do
+  gem 'shoulda-matchers', '~>3.1'
+  gem 'launchy'
 end
 
 group :development do

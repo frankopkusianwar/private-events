@@ -1,7 +1,8 @@
 <% @events.each do |event| %>
   <div class="card">
   <div class="card-header">
-    Coming or Past
+    <%= event.is_it_past? %>
+    <small class="text-muted"> <%= event.date %> </small>
   </div>
   <div class="card-body">
     <h5 class="card-title"> <%= event.name %> </h5>

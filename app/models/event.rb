@@ -15,21 +15,6 @@ class Event < ApplicationRecord
   has_many :sign_ups, foreign_key: 'Event_id'
   has_many :users_signed_up, through: :sign_ups, source: :User
 
-  def invite_list(words)
-    words.split(',')
-  end
-
-  def invite_action(arr, id)
-    list = invite_list(arr)
-
-    current_user_now = User.find(id)
-    list.each do |user_mail|
-      user = User.find_by(email: user_mail)
-      inv = Invitation.new(invitor: current_user_now, invitee: user, event: self)
-      inv.save
-    end
-  end
-
   def past?
     today = Time.now.to_s.split(' ')[0]
     if date > today

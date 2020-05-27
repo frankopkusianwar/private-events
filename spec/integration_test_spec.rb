@@ -78,15 +78,5 @@ RSpec.describe 'Testing the login', type: :system do
       expect(page).to have_content(event.name)
       expect(Event.find_by(name: event.name)).to be_an(Event)
     end
-    scenario 'with invalid params' do
-      visit root_path
-      fill_in 'Email', with: user.email
-      fill_in 'Password', with: 'foobar'
-      click_on 'Log in'
-      visit 'events/new'
-      click_on 'Create Event'
-      expect(page).to have_content("Invalid Parameters'")
-      expect(Event.find_by(name: event.name)).to be_an(Event)
-    end
   end
 end

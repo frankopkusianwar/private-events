@@ -12,7 +12,6 @@ class EventsController < ApplicationController
   def create
     @event = Event.new(event_params)
     if @event.save
-      @event.invite_action(params[:invitedlist], params[:user_now_id])
       user = User.find(params[:creator_id])
       @event.creators << user
       invitation = Invitation.new

@@ -1,8 +1,8 @@
 FactoryBot.define do
   factory :event do
-    name { 'Birthday' }
-    description { 'A nice party' }
+    name { Faker::Esport.event }
+    description { Faker::Esport.game }
     date { '2020-05-28' }
-    location { 'paris' }
+    location { Faker::Address.city }
   end
 end

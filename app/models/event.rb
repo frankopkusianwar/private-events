@@ -21,7 +21,6 @@ class Event < ApplicationRecord
     list = invite_list(arr)
     
     current_user_now = User.find(id)
-    byebug
     list.each do |user_mail|
       user = User.find_by(email: user_mail)
       inv = Invitation.new(invitor: current_user_now, invitee: user, event: self)

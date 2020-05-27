@@ -21,14 +21,7 @@ class User < ApplicationRecord
   end
 
   def check_invited?(event)
-    event.invitations.each do |e|
-      if e.invitor == self
-        return true
-      elsif e.invitee == self
-        return true
-      else
-        return false
-      end
-    end
+      return true if event.users_invited.include?(self)
   end
+
 end

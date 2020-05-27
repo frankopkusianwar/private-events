@@ -7,7 +7,7 @@
   <div class="button d-flex justify-content-between">
 
   <a class="btn btn-primary btn-lg" href="#" role="button">Learn more</a>
-  <% if current_user.check_invited?(@event) &&  @event.users_attendants.include?(current_user) %>
+  <% if current_user.check_invited?(@event) &&  !@event.users_attendants.include?(current_user) %>
     <%= form_with url: attendances_path , local: true, method: :POST do |f| %>
       <%= f.hidden_field :user, value: current_user.id %>
       <%= f.hidden_field :event, value: @event.id %>

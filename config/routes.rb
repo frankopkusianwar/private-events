@@ -8,6 +8,6 @@ Rails.application.routes.draw do
   end
   resources :invitations, only: %i[create]
   resources :sign_ups, only: %i[create]
-  resources :attendances, only: %i[create]
+  resources :attendances, only: %i[create index]
 end
 

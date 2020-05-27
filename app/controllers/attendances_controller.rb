@@ -6,6 +6,12 @@ class AttendancesController < ApplicationController
     @attendance.user_id = params[:user]
     @attendance.event_id = params[:event]
     @attendance.save
-    redirect_to event_path(@attendance.Event_id)
+    redirect_to attendances_path
   end
+
+  def index
+    @attended = Attendance.all
+    @event = Event.all
+  end
+
 end

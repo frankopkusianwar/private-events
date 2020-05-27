@@ -82,23 +82,14 @@ RSpec.describe 'Testing the login', type: :system do
       expect(page).to have_content(event.name)
       expect(Event.find_by(name: event.name)).to be_an(Event)
     end
-    scenario 'with valid params' do
+    scenario 'with invalid params' do
       visit root_path 
       fill_in 'Email', with: user.email
       fill_in 'Password', with: 'foobar'
       click_on 'Log in'
-      expect(page).to have_content('List of all Events')
       visit 'events/new'
-      fill_in 'Name'
-      fill_in 'Description'
-      fill_in 'Location'
-      fill_in 'Date'
       click_on 'Create Event'
-      visit root_path
-      expect(page).to have_content("The event needs a name")
-      expect(page).to have_content("The event needs a description")
-      expect(page).to have_content("The event needs a location")
-      expect(page).to have_content("The event needs a date")
+      expect(page).to have_content("Invalid Parameters'")
       expect(Event.find_by(name: event.name)).to be_an(Event)
     end
   end

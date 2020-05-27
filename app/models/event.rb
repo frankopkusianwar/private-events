@@ -33,7 +33,6 @@ class Event < ApplicationRecord
 
   def is_it_past?
     today = Time.now.to_s.split(' ')[0]
-    # today = today[5, today.size]
     if date > today
       return 'Coming'
     elsif date == today

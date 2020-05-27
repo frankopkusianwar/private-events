@@ -16,9 +16,6 @@ class User < ApplicationRecord
   has_many :sign_ups, foreign_key: 'User_id'
   has_many :events_signed_up, through: :sign_ups, source: :Event
 
-  def self.current_user_now
-    current_user
-  end
 
   def check_invited?(event)
       return true if event.users_invited.include?(self)

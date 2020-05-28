@@ -1,0 +1,25 @@
+
+<div class="jumbotron mt-4">
+  <% @events.each do |e| %>
+    <h1 class="display-4"> <%= e.name %> </h1>
+    <p class="lead"> <%= e.description %> </p>
+    <hr class="my-4">
+    <p> <%= e.date %> </p>
+    <div class="button d-flex justify-content-between">
+
+    <a class="btn btn-primary btn-lg" href="#" role="button">Learn more</a>
+  <% end %>
+
+  <p>Attended events</p>
+   <% @prev.each do |ev| %>
+    <p><%= ev.name %></p>
+    <small><%= ev.date %></small>
+   <% end %>
+
+  <p>Upcomming events</p>
+   <% @coming.each do |ev| %>
+    <h4><%= ev.name %></h4>
+    <small><%= ev.date %></small>
+   <% end %>
+</div>
+

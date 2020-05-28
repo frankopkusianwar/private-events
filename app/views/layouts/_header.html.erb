@@ -15,9 +15,8 @@
       <li class="nav-item dropdown">
        <%= link_to current_user.email, user_path(current_user), class:"nav-link dropdown-toggle", 'data-toggle' => 'dropdown'  %>
         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-          <%= link_to 'edit profile', class: "dropdown-item" %>
           <div class="dropdown-divider"></div>
-          <%= link_to 'view profile', class: "dropdown-item" %>
+          <%= link_to 'view profile', user_path(current_user), class: "dropdown-item" %>
         </div>
       </li>
       <li class="nav-item dropdown">

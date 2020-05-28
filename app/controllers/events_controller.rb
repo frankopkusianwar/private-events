@@ -10,11 +10,11 @@ class EventsController < ApplicationController
   end
 
   def create
-    @event = Event.new(event_params)
+    @event = current_user.events.build(event_params)
     if @event.save
       user = User.find(params[:creator_id])
-      @event.creators << user
       invitation = Invitation.new
+      invitation.status = true
       invitation.invitor = user
       invitation.invitee = user
       invitation.event = @event

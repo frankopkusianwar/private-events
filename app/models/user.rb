@@ -9,7 +9,7 @@ class User < ApplicationRecord
   has_many :users_invitors, class_name: 'Invitation', foreign_key: 'invitor_id'
   has_many :invitations, through: :users_invited, source: :invitor
   has_many :invites, through: :users_invitors, source: :invitee
-
+  has_many :events, foreign_key: 'creator_id'
   has_many :attendances, foreign_key: 'user_id'
   has_many :events_attended, through: :attendances, source: :event
 

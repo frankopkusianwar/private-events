@@ -10,6 +10,7 @@ class AttendancesController < ApplicationController
 
   def index
     @attended = Attendance.all
-    @event = Event.all
+    @eventpast = Event.prev_events
+    @eventfut = Event.upcoming_events
   end
 end

@@ -1,6 +1,23 @@
-<h3 class="h4 mt-4">List of all Events</h3>
+<h3 class="h4 mt-4">List of all Events in the Past</h3>
 
-<% @events.each do |event| %>
+<% @past_events.each do |event| %>
+  <div class="card">
+  <div class="card-header">
+    <%= event.past? %>
+    <small class="text-muted"> <%= event.date.split('-').reverse.join('-') %> </small>
+  </div>
+  <div class="card-body">
+    <h5 class="card-title"> <%= event.name %> </h5>
+    <p class="card-text"> <%= event.description %> </p>
+    <%= link_to 'See More', event_path(event), class: 'btn btn-primary' %>
+  </div>
+</div>
+
+<% end %>
+
+<h3 class="h4 mt-4">List of all Events in the Future</h3>
+
+<% @upcoming_events.each do |event| %>
   <div class="card">
   <div class="card-header">
     <%= event.past? %>

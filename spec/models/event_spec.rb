@@ -10,9 +10,7 @@ RSpec.describe Event, type: :model do
   end
 
   describe 'associations' do
-    it { should have_many(:creators).through(:creates) }
+    it { should belong_to(:creator) }
     it { should have_many(:users_invited).through(:invitations) }
-    it { should have_many(:users_attendants).through(:attendances) }
-    it { should have_many(:users_signed_up).through(:sign_ups) }
-  end
+
 end

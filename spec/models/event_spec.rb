@@ -2,7 +2,7 @@ require 'rails_helper'
 
 RSpec.describe Event, type: :model do
   subject { FactoryBot.build(:event, date: '1991/03/03') }
-  let (:future) { FactoryBot.build(:event, date: '3000/08/08') }
+  let(:future) { FactoryBot.build(:event, date: '3000/08/08') }
   describe 'validations' do
     subject { FactoryBot.build(:event) }
     it { should validate_presence_of(:name) }

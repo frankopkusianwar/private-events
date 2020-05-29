@@ -13,7 +13,6 @@ RSpec.describe User, type: :model do
   describe 'associations' do
     it { should have_many(:invitations).through(:users_invited) }
     it { should have_many(:invites).through(:users_invitors) }
-
   end
 
   describe '#prev_events' do

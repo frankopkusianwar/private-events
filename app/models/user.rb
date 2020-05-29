@@ -25,7 +25,7 @@ class User < ApplicationRecord
     end
     arr
   end
-  
+
   def prev_events(events)
     previus = []
     events.each do |e|
@@ -44,6 +44,7 @@ class User < ApplicationRecord
     end
     arr
   end
+
   def coming_events(events)
     upcoming = []
     events.each do |e|

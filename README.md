@@ -9,6 +9,9 @@
 - Screenshot of the tests
   ![screenshot](./screenshot2.png)
 
+## Live Demo
+[Live Demo Link](https://fast-inlet-47427.herokuapp.com/)
+
 ## Built With
 
 - Ruby on Rails

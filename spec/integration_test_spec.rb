@@ -8,8 +8,6 @@ RSpec.describe 'Testing the login', type: :system do
       visit root_path
       click_on 'Sign up'
       fill_in 'Email', with: user.email
-      fill_in 'Password', with: 'foobar'
-      fill_in 'Password confirmation', with: 'foobar'
       click_on 'Sign up'
       expect(page).to have_content('List of all Events')
     end
@@ -17,19 +15,8 @@ RSpec.describe 'Testing the login', type: :system do
     scenario 'Sign up with invalid email' do
       visit root_path
       click_on 'Sign up'
-
-      fill_in 'Password', with: 'foobar'
-      fill_in 'Password confirmation', with: 'foobar'
       click_on 'Sign up'
       expect(page).to have_content("Email can't be blank")
-    end
-
-    scenario 'Sign up with invalid password' do
-      visit root_path
-      click_on 'Sign up'
-      fill_in 'Email', with: Faker::Internet.email
-      click_on 'Sign up'
-      expect(page).to have_content("Password can't be blank")
     end
   end
 
@@ -38,7 +25,6 @@ RSpec.describe 'Testing the login', type: :system do
       visit root_path
       click_on 'Log in'
       fill_in 'Email', with: user.email
-      fill_in 'Password', with: 'foobar'
       click_on 'Log in'
       expect(page).to have_content('List of all Events')
     end
@@ -46,15 +32,6 @@ RSpec.describe 'Testing the login', type: :system do
     scenario 'Sign up with invalid email' do
       visit root_path
       click_on 'Log in'
-      fill_in 'Password', with: 'foobar'
-      click_on 'Log in'
-      expect(page).to have_content('Forgot your password?')
-    end
-
-    scenario 'Sign up with invalid password' do
-      visit root_path
-      click_on 'Log in'
-      fill_in 'Email', with: user.email
       click_on 'Log in'
       expect(page).to have_content('Forgot your password?')
     end
@@ -64,7 +41,6 @@ RSpec.describe 'Testing the login', type: :system do
     scenario 'with valid params' do
       visit root_path
       fill_in 'Email', with: user.email
-      fill_in 'Password', with: 'foobar'
       click_on 'Log in'
       expect(page).to have_content('List of all Events')
       visit 'events/new'

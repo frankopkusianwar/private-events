@@ -2,6 +2,7 @@ require 'rails_helper'
 
 RSpec.describe User, type: :model do
   subject { FactoryBot.build(:user) }
+  let(:events) { Event.all }
 
   describe 'validations' do
     it { should validate_presence_of(:email) }
@@ -15,15 +16,21 @@ RSpec.describe User, type: :model do
 
   end
 
-  describe '#check_invited' do
-    let(:event) { FactoryBot.build(:event) }
-    it 'should return true if the user is invited' do
-      inv = Invitation.new
-      inv.invitee = subject
-      inv.invitor = subject
-      inv.event = event
-      inv.save
-      expect(subject.check_invited?(event)).to be(true)
+  describe '#prev_events' do
+    it 'should return a list of all previous events' do
+      expect(subject.prev_events(events)).to be_an(Array)
+    end
+  end
+
+  describe '#coming_events' do
+    it 'should return a list of all future events' do
+      expect(subject.prev_events(events)).to be_an(Array)
+    end
+  end
+
+  describe '#attended_events' do
+    it 'should return a list of all attended events' do
+      expect(subject.prev_events(events)).to be_an(Array)
     end
   end
 end

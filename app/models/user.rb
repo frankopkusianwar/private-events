@@ -34,6 +34,16 @@ class User < ApplicationRecord
     previus
   end
 
+  def attended(events)
+    arr = []
+    events.each do |e|
+      inv = Invitation.find_by(invitee_id: id, event_id: e.id)
+      cr = Invitation.find_by(invitor_id: id, event_id: e.id)
+      arr << inv.event if inv.status == true
+      arr << cr.event if cr
+    end
+    arr
+  end
   def coming_events(events)
     upcoming = []
     events.each do |e|

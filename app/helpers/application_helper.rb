@@ -1,6 +1,6 @@
 module ApplicationHelper
   def accept_invitation
-    if current_user.check_invited?(@event) &&  !@event.creator == current_user
+    if current_user.check_invited?(@event) && @event.creator != current_user
       render 'events/accepinv'
     end
   end

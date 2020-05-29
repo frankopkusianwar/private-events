@@ -11,7 +11,7 @@ class User < ApplicationRecord
   has_many :events, foreign_key: 'creator_id'
 
   def check_invited?(event)
-    return true if event.users_invited.include?(self)
+    event.users_invited.include?(self)
   end
 
   def check_signed_up?(event)

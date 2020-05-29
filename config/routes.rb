@@ -8,5 +8,7 @@ Rails.application.routes.draw do
   end
   resources :invitations, only: %i[create]
   resources :attendances, only: %i[create index]
+  post '/events/:event_id', to: 'attend#create'
+
 end
 

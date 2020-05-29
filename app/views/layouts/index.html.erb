@@ -1,0 +1,33 @@
+
+<div class="jumbotron mt-4">
+
+ <h2>Attended events<h3>
+ <% @attended.each do |att| %>
+  <% if att.user == current_user %>
+    <div class="card">
+    <div class="card-header">
+    <small class="text-muted"> <%= att.event.date.split('-').reverse.join('-') %> </small>
+  </div>
+  <div class="card-body">
+    <h5 class="card-title"><%=att.event.name%></h5>
+    </div>
+  </div>
+  <%end%>
+ <%end%>
+
+ <h3>upcoming events<h3>
+ <% @event.each do |e| %>
+  <% if e.past? == 'Coming'%>
+  <div class="card">
+      <div class="card-header">
+        <small class="text-muted"> <%= e.date.split('-').reverse.join('-') %> </small>
+      </div>
+      <div class="card-body">
+        <h5 class="card-title"><%=e.name%></h5>
+      </div>
+    </div>
+    <% end %>
+  <% end %>
+
+</div>
+

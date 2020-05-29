@@ -1,0 +1,11 @@
+            
+            <li class="list-group-item"> <%= user.email %></li>
+            <li class="list-group-item"> 
+            <div class="form-group">
+              <%= form_with url: invitations_path , local: true, method: :POST do |f| %>
+                <%= f.hidden_field :invitator, value: current_user.id %>
+                <%= f.hidden_field :invitee, value: user.id %>
+                <%= f.hidden_field :event, value: event.id %>
+                <button type="submit" class="btn btn-primary">Invite User</button>
+              <% end %>
+              </div></li>

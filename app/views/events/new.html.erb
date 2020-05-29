@@ -1,0 +1,27 @@
+<%= form_with model: @event, local: true do |f| %>
+  <div class="form-group">
+    <%= f.label :name %>
+    <%= f.text_field :name, class: 'form-control', placeholder: 'Event Name'%>
+  </div>
+  <div class="form-group">
+    <%= f.label :description %>
+    <%= f.text_area :description, class: 'form-control', placeholder: 'Description'%>
+  </div>
+  <div class="form-group">
+    <%= f.label :location %>
+    <%= f.text_field :location, class: 'form-control', placeholder: 'Event Location'%>
+  </div>
+  <div class="form-group">
+    <%= f.label :date %>
+    <%= f.date_field :date, class: 'form-control', placeholder: 'Event Date'%>
+  </div>
+  <div class="form-group">
+    <%= f.label :invitedlist %>
+    <%= text_field_tag(:invitedlist) %>
+    <%=  hidden_field_tag(:user_now_id, value = current_user.id) %>
+  </div>
+    <div class="form-group">
+    <%=  hidden_field_tag(:creator_id, value = current_user.id) %>
+  </div>
+  <button type="submit" class="btn btn-primary">Create Event</button>
+<% end %>

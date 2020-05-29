@@ -1,0 +1,42 @@
+
+<div class="jumbotron mt-4">
+  <p class='h4'>Past events</p>
+
+  <% @prev.each do |e| %>
+    <h1 class="h3"> <%= e.name %> </h1>
+    <p class="lead"> <%= e.description %> </p>
+    <hr class="my-4">
+    <p> <%= e.date.split('-').reverse.join('-') %>  </p>
+    <div class="button d-flex justify-content-between">
+      <% end %>
+
+</div>
+</div>
+
+<div class="jumbotron mt-4">
+  <p class='h4'>Upcomming events</p>
+
+  <% @coming.each do |e| %>
+    <h1 class="h3"> <%= e.name %> </h1>
+    <p class="lead"> <%= e.description %> </p>
+    <hr class="my-4">
+    <p> <%= e.date.split('-').reverse.join('-') %>  </p>
+    <div class="button d-flex justify-content-between">
+      <% end %>
+
+</div>
+</div>
+
+<div class="jumbotron mt-4">
+     <p class='h4'>Attended events</p>
+
+  <% @attended.each do |e| %>
+    <h1 class="h3"> <%= e.name %> </h1>
+    <p class="lead"> <%= e.description %> </p>
+    <hr class="my-4">
+    <p> <%= e.date.split('-').reverse.join('-') %>  </p>
+    <div class="button d-flex justify-content-between">
+      <% end %>
+
+</div>
+</div>

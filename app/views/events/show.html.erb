@@ -1,0 +1,35 @@
+
+<div class="jumbotron">
+  <h1 class="display-4"> <%= @event.name %> </h1>
+  <p class="lead"> <%= @event.description %> </p>
+  <hr class="my-4">
+  <p> <%= @event.date %> </p>
+  <div class="button d-flex justify-content-between">
+
+  <a class="btn btn-primary btn-lg" href="#" role="button">Learn more</a>
+  <%= accept_invitation %>
+
+</div>
+<div class="row">
+  <div class="col-4">
+  <h4 class="h5"> Guest List </h4>
+  <div class="card" style="width: 18rem;">
+    <ul class="list-group list-group-flush">
+      <% @event.invitations.each do |invitation| %>
+        <li class="list-group-item"> <%= invitation.invitee.email %> </li>
+        <% end %>
+    </ul>
+  </div>
+  </div>
+
+  <div class="col-4">
+    <h4 class="h5 mt-3"> List of all users </h4>
+    <div class="card" style="width: 18rem;">
+      <ul class="list-group list-group-flush">
+        <% @users.each do |user| %>
+            <%= invite_user(user, @event) %>
+          <% end %>
+      </ul>
+    </div> 
+  </div>
+

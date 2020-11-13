@@ -35,6 +35,10 @@ To get a local copy up and running follow these simple example steps.
 - Open your terminal and type in 'rails db:migrate'
 - Type 'rails server' on your terminal
 
+### Tests
+
+- To run tests `bundle rspec`
+
 ## Author
 
 - Okiror Frank
